@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using MyLeasing.Common;
 using MyLeasing.Web.Data.Entities;
-using System.Collections.Generic;
+using System.Data.Common;
 
 namespace MyLeasing.Web.Data
 {
-    public class DataContext: IdentityDbContext<User>
+    public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Owner> Owners { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options)
@@ -13,3 +15,4 @@ namespace MyLeasing.Web.Data
         }
     }
 }
+

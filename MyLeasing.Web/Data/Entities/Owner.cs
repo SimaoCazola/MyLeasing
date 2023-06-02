@@ -36,7 +36,7 @@ namespace MyLeasing.Common
         public string? Address { get; set; }
 
         [DisplayName("Owner Name")]
-        //public string FullName => $"{FirstName} {LastName}";
+
         public string FullName
         {
             get { return FirstName + " " + LastName; }

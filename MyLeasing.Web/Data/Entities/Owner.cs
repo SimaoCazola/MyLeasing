@@ -9,20 +9,23 @@ namespace MyLeasing.Common
 {
     public class Owner : IEntity
     {
+
         public int Id { get; set; }
-        [Required]
-        [MaxLength(50, ErrorMessage = "The field {0} can contain {1}Characters length.")]
-        [DisplayName("Document*")]
+        [Display(Name = "Document")]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Document { get; set; }
-
-        [Required]
-        [DisplayName("First Name*")]
+        [Display(Name = "First Name")]
+        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string FirstName { get; set; }
-
-        [Required]
-        [DisplayName("Last Name*")]
+        [Display(Name = "Last Name")]
+        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string LastName { get; set; }
-
+        [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string Address { get; set; }
+    
         [Required]
         [DisplayName("Fixed Phone")]
         public string? FixedPhone { get; set; }
@@ -31,17 +34,8 @@ namespace MyLeasing.Common
         [DisplayName("Cell Phone")]
         public string? Cellphone { get; set; }
 
-        [Required]
-        [DisplayName("Address")]
-        public string? Address { get; set; }
-
-        [DisplayName("Owner Name")]
-
-        public string FullName
-        {
-            get { return FirstName + " " + LastName; }
-        }
-
+        public string FullName => $"{FirstName} {LastName}";
+        public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
         public User User { get; set; }
 
 
